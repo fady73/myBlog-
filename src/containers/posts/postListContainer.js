@@ -67,6 +67,7 @@ class PostListContainer extends React.Component {
 
 		const posts = (this.props.location.pathname === '/posts') ? this.props.posts : this.state.filteredPosts;
 		const pageNumbers = [];
+		console.log("hello")
 		for (let i = 1; i <= Math.ceil(posts.length / this.state.postsPerPage) ; i++)
 			pageNumbers.push(i);
 
