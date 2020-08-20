@@ -37,7 +37,7 @@ class EditPost extends Component {
 			return (
 				<div className="top-buttons text-right">
 					<Link 
-						to={`/posts/${this.props.post.id}`} 
+						to={`/question/${this.props.post.id}`} 
 						className="btn btn-primary"><i className="fa fa-image"></i>View</Link>
 					<button 
 						className="btn btn-danger" 

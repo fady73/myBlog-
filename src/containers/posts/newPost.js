@@ -9,8 +9,7 @@ import PostForm from '../../components/form/postForm';
 class NewPost extends Component {
 
 	onSubmit(values) {
-		const post = {...values, uid: this.props.auth.uid};
-		console.log(post);
+		const post = {...values, uid: this.props.auth.uid,user:this.props.auth.user};
 		this.props.createPost(post, () => { 
 			this.props.history.push("/");
 			showAlert('The post has been successfully created');

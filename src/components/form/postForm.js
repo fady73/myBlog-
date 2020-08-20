@@ -8,18 +8,18 @@ const PostForm = (props) => {
 	return (
 		<Form onSubmit={onSubmit}>
 			<Field 
-				label="Title"
+				label="Question Title"
 				name="title"
 				type="text"
-				placeholder="Enter Post Title"
+				placeholder="Enter Question Title"
 				component={renderInputField}
 			/>
 			
 			<Field 
-				label="Post Content"
+				label="Question Details"
 				name="content"
 				rows="10"
-				placeholder="Enter Post Content"
+				placeholder="Enter Question Details"
 				component={renderTextareaField}
 			/>
 			

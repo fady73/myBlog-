@@ -23,7 +23,7 @@ class Profile extends Component {
 		this.props.updateProfile({displayName: values.username}, () => {
 			showAlert('Your profile has been saved successfully.');
 		});
-	}
+		this.props.history.push("/");	}
 
 	renderProfile() {
 		const {handleSubmit} = this.props;

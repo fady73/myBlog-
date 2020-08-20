@@ -39,7 +39,7 @@ export function register(email, password, username, callback1, callback2) {
 
 
 export function userCreated(user, profile, callback) {
-    const usesr = firebase.auth().currentUser;
+	const usesr = firebase.auth().currentUser;
     return dispatch => {
     	dispatch({
 			type: CREATE_USER_SUCCESS,
@@ -52,10 +52,10 @@ export function userCreated(user, profile, callback) {
     			payload: profile
     		});
     		callback();
-    	});
-    	firebase.database().ref('users/'+user.uid).set({
+		});
+    	firebase.database().ref('users/'+user.user.uid).set({
     		displayName: profile.displayName,
-    		email: user.email
+    		email: user.user.email
     	})
 	}
 }
@@ -149,7 +149,6 @@ export function updateProfile(profile, callback) {
 			type: UPDATE_PROFILE_REQUEST
 		})
 		const user = firebase.auth().currentUser;
-		
 		user.updateProfile(profile)
 		.then(() => {
 			updateUsernameOfComments(user.uid, profile);

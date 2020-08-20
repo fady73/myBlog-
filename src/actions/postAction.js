@@ -61,7 +61,7 @@ export function getPostCreatorAndComments(post, postId) {
                 type: FETCH_POST_SUCCESS,
                 post: post,
                 id: postId,
-                user: user?user.displayName:'',
+                user: user?user.displayName:post.user,
                 comments: comments
             })
         })

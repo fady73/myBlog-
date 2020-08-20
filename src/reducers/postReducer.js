@@ -29,7 +29,6 @@ export default function(state = initialState, action) {
 				comments: action.comments, 
 				isFetched: true});
 		case ADD_COMMENT_SUCCESS:
-		console.log(action.payload);
 			return Object.assign({}, state, {
 				comments: {...state.comments, [action.id]: action.payload}
 			});

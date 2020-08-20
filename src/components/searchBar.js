@@ -27,7 +27,7 @@ export class SearchBar extends React.Component {
 							ref="searchBar"
 							type="text" 
 							className="form-control" 
-							placeholder="Search for..." 
+							placeholder="Search by questions title or details" 
 							onChange={this.onInputChange.bind(this)}
 						/>
 						<span className="input-group-btn">

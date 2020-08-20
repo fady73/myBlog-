@@ -25,7 +25,7 @@ class PostListContainer extends React.Component {
 
 	handleSearchBar(searchTerm) {
 		const filteredPosts = this.props.posts.filter(post => {
-			return post.title.toLowerCase().match(searchTerm) || post.content.toLowerCase().match(searchTerm);
+			return post.title.toLowerCase().match(searchTerm) ||( post.content!==undefined?post.content.toLowerCase().match(searchTerm):'');
 		});
 		
 		this.setState({filteredPosts: filteredPosts, lastIndex: 0});
@@ -42,6 +42,7 @@ class PostListContainer extends React.Component {
 		return (
 			<div className="post-index">
 				<div className="posts">
+					{filteredPosts.length===0?<div className="d-flex justify-content-center">No result found try again..</div>:''}
 					{_.map(posts, (post, key) => {
 					return <Post 
 								key={key}
@@ -65,9 +66,8 @@ class PostListContainer extends React.Component {
 
     render() {
 
-		const posts = (this.props.location.pathname === '/posts') ? this.props.posts : this.state.filteredPosts;
+		const posts = (this.props.location.pathname === '/questions') ? this.props.posts : this.state.filteredPosts;
 		const pageNumbers = [];
-		console.log("hello")
 		for (let i = 1; i <= Math.ceil(posts.length / this.state.postsPerPage) ; i++)
 			pageNumbers.push(i);
 
@@ -76,7 +76,7 @@ class PostListContainer extends React.Component {
 
 				<SearchBar onSubmit={this.handleSearchBar.bind(this)}/>
 				<Route exact path={`/`} component={PostIndex}></Route>
-				<Route path={`/posts`} component={PostIndex}></Route>
+				<Route path={`/questions`} component={PostIndex}></Route>
 				<Route path={`/search`} render={() => this.renderFilteredPosts(this.state.filteredPosts)}></Route>
 				
 			</div>

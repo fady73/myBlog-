@@ -6,11 +6,11 @@ import reducers from '../reducers';
 import * as Auth from '../actions/authAction';
 
 export default () => {
-	const logger = createLogger();
+	// const logger = createLogger();
 
 	const store = createStore(
 		reducers,
-		applyMiddleware(promise, thunk, logger)
+		applyMiddleware(promise, thunk)
 		
 	);
 	store.dispatch(Auth.verifyAuth());

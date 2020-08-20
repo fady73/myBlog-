@@ -60,7 +60,7 @@ class ShowPost extends Component {
 	renderButtons(post) {
 		if (this.props.auth.uid === post.uid)
 			return (<div className="form-buttons text-right">
-						<Link to={`/posts/edit/${post.id}`} className="btn btn-primary"><i className="fa fa-edit"></i>Edit Post</Link>
+						<Link to={`/question/edit/${post.id}`} className="btn btn-primary"><i className="fa fa-edit"></i>Edit Post</Link>
 					</div>);
 	}
 

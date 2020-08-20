@@ -36,7 +36,7 @@ class PostIndex extends Component {
 
 	handlePaginationClick(e) {
 		this.setState({currentPage: e.target.id});	
-		this.props.history.push(`/posts?page=${e.target.id}`);
+		this.props.history.push(`/questions?page=${e.target.id}`);
 	}
 
 	handlePrevNextClick(e, pageNumbers, currentPage) {
@@ -45,12 +45,12 @@ class PostIndex extends Component {
 		if (currentPage > 1 && e.target.id === 'Prev') {
 			let page = currentPage - 1;
 			this.setState({currentPage: page});
-			this.props.history.push(`/posts?page=${page}`);
+			this.props.history.push(`/questions?page=${page}`);
 		}
 		else if (currentPage < lastPage && e.target.id === 'Next') {
 			let page = Number(currentPage) + 1;
 			this.setState({currentPage: page});
-			this.props.history.push(`/posts?page=${page}`);
+			this.props.history.push(`/questions?page=${page}`);
 		}
 	}
 
@@ -76,15 +76,16 @@ class PostIndex extends Component {
 			return <Loader />
 		
 		if (!posts.length && isFetched)
-			return <div className="post-index">There are no posts yet.</div>
+			return <div className="post-index d-flex justify-content-center">There are no questions yet.</div>
 		
-		const pageNumbers = [];
+	    const pageNumbers = [];
 		for (let i = 1; i <= Math.ceil(posts.length / this.state.postsPerPage) ; i++)
 			pageNumbers.push(i);
 
 		return (
 
 				<div className="post-index">
+							
 					<div className="posts">
 						{this.renderPosts()}
 					</div>

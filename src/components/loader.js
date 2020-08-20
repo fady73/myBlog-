@@ -3,10 +3,11 @@ import React from 'react';
 
 const Loader = (props) => {
 	return (
-		<div className="loader">
-			Laoding
-			{/* <Halogen.PulseLoader  color="#26A65B" size="10px" /> */}
+		<div class="d-flex justify-content-center">
+		<div class="spinner-border" role="status">
+		  <span class="sr-only">Loading...</span>
 		</div>
+	  </div>
 	);
 }
 

@@ -12,7 +12,7 @@ const Post = (props) => {
 		<div className="row">
 			<div className="post col-sm-10 col-sm-offset-1 animated fadeIn">
 				<div className="d-flex w-100 justify-content-between">
-					<Link className="post-title" to={`/posts/${post.id}`}>{post.title}</Link>
+					<Link className="post-title" to={`/question/${post.id}`}>{post.title}</Link>
 				</div>
 				<div className="post-content">
 					<LinesEllipsis text={post.content} maxLine='2' ellipsis='...' trimRight />
