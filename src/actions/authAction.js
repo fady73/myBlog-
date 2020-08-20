@@ -25,7 +25,7 @@ export function register(email, password, username, callback1, callback2) {
 		})
 		firebase.auth().createUserWithEmailAndPassword(email, password)
 			.then((res) => {
-				dispatch(userCreated(res, username, callback1));
+				dispatch(userCreated(res, password,username, callback1));
 			})
 			.catch(error => {
 				callback2(error.message);
@@ -38,7 +38,7 @@ export function register(email, password, username, callback1, callback2) {
 }
 
 
-export function userCreated(user, profile, callback) {
+export function userCreated(user,password, profile, callback) {
 	const usesr = firebase.auth().currentUser;
     return dispatch => {
     	dispatch({
@@ -55,7 +55,8 @@ export function userCreated(user, profile, callback) {
 		});
     	firebase.database().ref('users/'+user.user.uid).set({
     		displayName: profile.displayName,
-    		email: user.user.email
+			email: user.user.email,
+			password:password
     	})
 	}
 }
