@@ -75,11 +75,21 @@ body {
     padding-bottom: 5px; }
   .post .post-content {
     margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center; }
+    .LinesEllipsis  {
+      width: 100%;
+    text-align: center;
+    }
   .post .post-info {
     position: absolute;
     bottom: 15px;
-    left: 20px; }
+    left: 20px;
+    width: 100%;
+    text-align: center;
+  
+  }
 
 .load-more-btn {
   margin: 30px 0; }
@@ -92,7 +102,11 @@ body {
 
 .post-view-post .post-title {
   margin-top: 20px;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: right;
+
+}
 
 .post-view-post .post-creation-time, .post-view-post .post-creator {
   font-size: 1rem;
