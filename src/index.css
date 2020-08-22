@@ -70,7 +70,6 @@ body {
     color: #000;
     margin-top: 20px;
     overflow: hidden;
-    white-space: nowrap;
     text-overflow: ellipsis;
     padding-bottom: 5px; }
   .post .post-content {
