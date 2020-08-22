@@ -103,11 +103,11 @@ body {
 .post-view-post .post-title {
   margin-top: 20px;
   margin-bottom: 15px;
+}
+.row .post-title{
   width: 100%;
   text-align: right;
-
 }
-
 .post-view-post .post-creation-time, .post-view-post .post-creator {
   font-size: 1rem;
   margin-left: 10px;
