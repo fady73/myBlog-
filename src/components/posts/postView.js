@@ -7,7 +7,7 @@ const PostView = (props) => {
 	const formatedDate = date.toJSON();
 
 	return (
-		<div className="post-detail">
+		<div className="post-detail text-center">
 			<h2 className="post-title">{post.title}</h2>
 			<div className="post-creation-time">
 				<i className="fa fa-calendar"></i>

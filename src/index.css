@@ -117,6 +117,9 @@ body {
 **********************************/
 .post-form .top-buttons a {
   margin-right: 10px; }
+  .comment-body{
+    text-align: end;
+  }
 
 /*********************************
 		PostIndex Page
