@@ -77,11 +77,8 @@ body {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
-    text-align: center; }
-    .LinesEllipsis  {
-      width: 100%;
-    text-align: center;
-    }
+    text-align: right; }
+
   .post .post-info {
     position: absolute;
     bottom: 15px;
