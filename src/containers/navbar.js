@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../actions/authAction";
+import ReactGA from 'react-ga';
 
 class Navbar extends Component {
   onLogout() {
@@ -12,8 +13,12 @@ class Navbar extends Component {
   }
 
   renderNavbar() {
-    const { auth } = this.props;
-
+    const { auth,history} = this.props;
+		ReactGA.pageview(this.props.location.pathname);  
+    this.props.history.listen((location) => {
+      ReactGA.set({ page: location.pathname });
+      ReactGA.pageview(location.pathname);
+    });
     if (auth.isAuthenticated) {
       return (
         <ul className="navbar-nav ml-auto">
