@@ -25,7 +25,7 @@ import {
 class App extends React.Component {
   state = { allBooks: [] };
   componentDidMount() {
-    ReactGA.initialize("UA-176102525-1");
+    ReactGA.initialize('UA-174965063-1');
 
  
   }
