@@ -87,8 +87,9 @@ class Navbar extends Component {
           onClick={()=>{
             window.analytics.track('clickOnNav', {
               // postId:id,
-              // userAgent: window.navigator.userAgent,
-              // appVersion: `${window.navigator.appVersion} `,
+              userAgent: window.navigator.userAgent,
+              appVersion: `${window.navigator.appVersion} `,
+              platform:`${window.navigator.platform}`,
               click:"true"
               });
           }}
