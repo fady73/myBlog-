@@ -8,6 +8,7 @@ import Loader from '../../components/loader';
 import SearchBar from '../../components/searchBar';
 import Pagination from '../../components/pagination';
 
+import ReactGA from 'react-ga';
 
 class PostIndex extends Component {
 
@@ -27,10 +28,14 @@ class PostIndex extends Component {
 		else {
 			this.setState({currentPage: 1});
 		}
+		ReactGA.pageview(this.props.location.pathname);  
+
 	}
 	
 	componentDidMount() {
 		this.props.fetchPosts();
+		ReactGA.pageview(this.props.location.pathname);  
+
 	}
 
 

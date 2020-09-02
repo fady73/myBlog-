@@ -4,6 +4,7 @@ import {reduxForm} from 'redux-form';
 import {register} from '../../actions/authAction';
 import {validateUserForm as validate, renderUserForm} from '../../components/form/forms';
 import {showAlert} from '../../components/alert';
+import ReactGA from 'react-ga';
 
 
 class SignUp extends Component {
@@ -20,6 +21,8 @@ class SignUp extends Component {
 		}, (error) => {
 			this.setState({errorMessage: error});
 		});
+		ReactGA.pageview(this.props.location.pathname);  
+
 	}
 
 

@@ -14,6 +14,12 @@ class ShowPost extends Component {
 	componentDidMount() {
 		const {id} = this.props.match.params;
 		this.props.fetchPost(id);
+		window.analytics.track('posts', {
+			postId:id,
+			userAgent: window.navigator.userAgent,
+			appVersion: `${window.navigator.appVersion} `,
+			platform:`${window.navigator.platform}`
+		  });
 	}
 
 	onSubmitComment(values) {

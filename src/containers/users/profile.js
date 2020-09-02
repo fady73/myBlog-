@@ -5,6 +5,7 @@ import firebase from 'firebase';
 import {getProfile, updateProfile} from '../../actions/authAction';
 import {renderInputField} from '../../components/form/forms';
 import {showAlert} from '../../components/alert';
+import ReactGA from 'react-ga';
 
 
 class Profile extends Component {
@@ -16,6 +17,8 @@ class Profile extends Component {
 				this.props.initialize({username: this.props.auth.user});
 			}
 		});
+		ReactGA.pageview(this.props.location.pathname);  
+
 	}
 
 
