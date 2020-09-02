@@ -84,6 +84,14 @@ class Navbar extends Component {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={()=>{
+            window.analytics.track('clickOnNav', {
+              // postId:id,
+              // userAgent: window.navigator.userAgent,
+              // appVersion: `${window.navigator.appVersion} `,
+              click:"true"
+              });
+          }}
         >
           <span class="navbar-toggler-icon"></span>
         </button>
