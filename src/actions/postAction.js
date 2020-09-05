@@ -108,9 +108,7 @@ export function deleteComment(id, comment,commentid,callback) {
                     type: DELETE_POST_SUCCESS
                 })
 
-                database.ref('userComments/'+comment.uid + '/' + id).update({
-                    [commentid]: false
-                });
+                database.ref('userComments/'+comment.uid + '/' + id).child(commentid).remove();
             
             }).catch(error => {
                 dispatch({
