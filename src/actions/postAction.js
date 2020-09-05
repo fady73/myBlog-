@@ -96,6 +96,30 @@ export function deletePost(id, callback) {
         }
 }
 
+export function deleteComment(id, comment,commentid,callback) {
+    return dispatch => {
+        dispatch({
+            type: DELETE_POST_REQUEST
+        })
+        database.ref('comments/'+ id).child(commentid).remove(() => {})
+            .then(() => {
+                typeof callback === 'function' && callback();
+                dispatch({
+                    type: DELETE_POST_SUCCESS
+                })
+
+                database.ref('userComments/'+comment.uid + '/' + id).child(commentid).remove();
+            
+            }).catch(error => {
+                dispatch({
+                    type: DELETE_POST_FAIL,
+                    payload: error.message
+                })
+            });
+        }
+    
+}
+
 export function editPost(id, post) {
     return dispatch => database.ref('posts/' + id).update(post);
 }

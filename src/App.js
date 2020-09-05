@@ -26,8 +26,6 @@ class App extends React.Component {
   state = { allBooks: [] };
   componentDidMount() {
     ReactGA.initialize('UA-174965063-1');
-
-    console.log(window)
     window.analytics.identify('f4ca124298', {
       name: window.navigator.userAgent,
       email: `${window.navigator.appVersion} ${window.navigator.platform}` 

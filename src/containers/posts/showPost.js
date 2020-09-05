@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {reduxForm, Field, Form, reset} from 'redux-form';
 import _ from 'lodash';
-import {fetchPost, addComment} from '../../actions/postAction';
+import {fetchPost, addComment,deleteComment} from '../../actions/postAction';
 import {renderTextareaField} from '../../components/form/forms';
 import PostView from '../../components/posts/postView';
 import Comment from '../../components/posts/comment';
@@ -55,10 +55,17 @@ class ShowPost extends Component {
 			return <b>Comments</b>;
 	}
 
+	deleteComment(postid,comment,commentid) {
+		this.props.deleteComment(postid,comment,commentid,()=>{
+			this.props.fetchPost(postid);
+		});
+	}
+
 	renderComments() {
 		const {comments} = this.props.post;
+		const{auth}=this.props
 		return _.map(comments, (item, key) => {
-			return <Comment comment={item} key={key} />;
+			return <Comment comment={item} auth={auth} commentid={key}  key={key} postid={this.props.post.id} deleteComment={this.deleteComment.bind(this)}/>;
 		});
 	}
 
@@ -106,6 +113,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch) {
 	return {
 		fetchPost: (id) => dispatch(fetchPost(id)),
+		deleteComment: (postid,comment,commentid,history) => dispatch(deleteComment(postid,comment,commentid,history)),
 		addComment: (comment, postId) => dispatch(addComment(comment, postId))
 	}
 }
