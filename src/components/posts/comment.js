@@ -2,13 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Comment = (props) => {
-	const {comment} = props;
+  const {comment,deleteComment,postid,commentid,auth} = props;
 	return(
 		<div className="comment">
+      
 			<div className="comment-user">{comment.user} 
 				<span>{(typeof comment.createdAt != 'object') ? timeSince(comment.createdAt) + ' ago' : ''}</span>
 			</div> 
 			<p className="comment-body">{comment.message}</p> 
+      {comment.uid===auth.uid&&<button 
+						className="btn btn-danger" 
+						onClick={deleteComment.bind(this, postid,comment,commentid)}><i className="fa fa-remove"></i>Delete</button>}
+
 		</div>
 	);
 };
