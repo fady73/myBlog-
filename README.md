@@ -1,6 +1,5 @@
-# MyReads Project :
-it is just bookmark for your book and you can view your book and there three main catagory readed or current read or want to read
-you can search for any book and choose one of this catagory and it will apear in your main home page
+# myBlog Project :
+
 
 ## How To Run:
 
