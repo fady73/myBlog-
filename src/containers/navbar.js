@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../actions/authAction";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 class Navbar extends Component {
   onLogout() {
@@ -13,8 +13,8 @@ class Navbar extends Component {
   }
 
   renderNavbar() {
-    const { auth,history} = this.props;
-		ReactGA.pageview(this.props.location.pathname);  
+    const { auth, history } = this.props;
+    ReactGA.pageview(this.props.location.pathname);
     this.props.history.listen((location) => {
       ReactGA.set({ page: location.pathname });
       ReactGA.pageview(location.pathname);
@@ -84,14 +84,14 @@ class Navbar extends Component {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
-          onClick={()=>{
-            window.analytics.track('clickOnNav', {
+          onClick={() => {
+            window.analytics.track("clickOnNav", {
               // postId:id,
               userAgent: window.navigator.userAgent,
               appVersion: `${window.navigator.appVersion} `,
-              platform:`${window.navigator.platform}`,
-              click:"true"
-              });
+              platform: `${window.navigator.platform}`,
+              click: "true",
+            });
           }}
         >
           <span class="navbar-toggler-icon"></span>

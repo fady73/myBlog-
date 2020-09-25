@@ -1,5 +1,6 @@
 import React from "react";
-import { Route, Switch,BrowserRouter} from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 import Navbar from "./containers/navbar";
 import PostIndex from "./containers/posts/postIndex";
@@ -25,57 +26,70 @@ import {
 class App extends React.Component {
   state = { allBooks: [] };
   componentDidMount() {
-    ReactGA.initialize('UA-174965063-1');
-    window.analytics.identify('f4ca124298', {
+    ReactGA.initialize("UA-174965063-1");
+    window.analytics.identify("f4ca124298", {
       name: window.navigator.userAgent,
-      email: `${window.navigator.appVersion} ${window.navigator.platform}` 
+      email: `${window.navigator.appVersion} ${window.navigator.platform}`,
     });
-    
- 
   }
 
   render() {
     return (
-      <BrowserRouter >
-
-      <div className="wrapper">
-        <Navbar />
-        <div className="container">
-          <Switch>
-            <RequireAuth
-              path="/users/profile"
-              component={Profile}
-              redirectCheck={REDIRECT_IF_GUEST}
-            />
-            <RequireAuth
-              path="/users/register"
-              component={Register}
-              redirectCheck={REDIRECT_IF_AUTHENTICATED}
-            />
-            <RequireAuth
-              path="/users/login"
-              component={Login}
-              redirectCheck={REDIRECT_IF_AUTHENTICATED}
-            />
-            <RequireAuth
-              path="/question/create"
-              component={NewPost}
-              redirectCheck={REDIRECT_IF_GUEST}
-            />
-            <RequireAuth
-              path="/question/edit/:id"
-              component={EditPost}
-              redirectCheck={REDIRECT_IF_GUEST}
-            />
-            <Route path="/question/:id" component={ShowPost}></Route>
-            <Route path="/" component={PostListContainer}></Route>
-          </Switch>
+      <BrowserRouter>
+        <div className="wrapper">
+          <Navbar />
+          <div className="container">
+            <Switch>
+              <RequireAuth
+                path="/users/profile"
+                component={Profile}
+                authProps={this.props}
+                redirectCheck={REDIRECT_IF_GUEST}
+              />
+              <RequireAuth
+                path="/users/register"
+                component={Register}
+                redirectCheck={REDIRECT_IF_AUTHENTICATED}
+                authProps={this.props}
+              />
+              <RequireAuth
+                path="/users/login"
+                component={Login}
+                redirectCheck={REDIRECT_IF_AUTHENTICATED}
+                authProps={this.props}
+              />
+              <RequireAuth
+                path="/question/create"
+                component={NewPost}
+                authProps={this.props}
+                redirectCheck={REDIRECT_IF_GUEST}
+              />
+              <RequireAuth
+                path="/question/edit/:id"
+                component={EditPost}
+                authProps={this.props}
+                redirectCheck={REDIRECT_IF_GUEST}
+              />
+              <Route
+                path="/question/:id"
+                authProps={this.props}
+                component={ShowPost}
+              ></Route>
+              <Route
+                path="/"
+                authProps={this.props}
+                component={PostListContainer}
+              ></Route>
+            </Switch>
+          </div>
         </div>
-      </div>
       </BrowserRouter>
-
     );
   }
 }
-
-export default App;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+export default connect(mapStateToProps)(App);
