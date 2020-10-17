@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -21,7 +21,7 @@ class Navbar extends Component {
     });
     if (auth.isAuthenticated) {
       return (
-        <ul className="navbar-nav ml-auto">
+        <Fragment>
           <li className="nav-item">
             <NavLink
               exact={true}
@@ -41,11 +41,11 @@ class Navbar extends Component {
               <i className="fa fa-sign-out"></i>تسجيل خروج
             </button>
           </li>
-        </ul>
+        </Fragment>
       );
     } else
       return (
-        <ul className="navbar-nav ml-auto">
+        <Fragment>
           <li className="nav-item">
             <NavLink
               exact={true}
@@ -66,7 +66,7 @@ class Navbar extends Component {
               <i className="fa fa-user-plus"></i>تسجيل مستخدم جديد
             </NavLink>
           </li>
-        </ul>
+        </Fragment>
       );
   }
 
@@ -118,8 +118,8 @@ class Navbar extends Component {
                 <i className="fa fa-plus-circle"></i>سؤال جديد
               </NavLink>
             </li>
+            {this.renderNavbar()}
           </ul>
-          {this.renderNavbar()}
         </div>
       </nav>
     );
