@@ -38,7 +38,7 @@ class Navbar extends Component {
               className="nav-link logout-btn"
               onClick={this.onLogout.bind(this)}
             >
-              <i className="fa fa-sign-out"></i>Logout
+              <i className="fa fa-sign-out"></i>تسجيل خروج
             </button>
           </li>
         </ul>
@@ -53,7 +53,7 @@ class Navbar extends Component {
               to="/users/login"
               className="nav-link"
             >
-              <i className="fa fa-sign-in"></i>Log In
+              <i className="fa fa-sign-in"></i>تسجيل دخول
             </NavLink>
           </li>
           <li className="nav-item">
@@ -63,7 +63,7 @@ class Navbar extends Component {
               to="/users/register"
               className="nav-link"
             >
-              <i className="fa fa-user-plus"></i>Register
+              <i className="fa fa-user-plus"></i>تسجيل مستخدم جديد
             </NavLink>
           </li>
         </ul>
@@ -74,7 +74,7 @@ class Navbar extends Component {
     return (
       <nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
         <NavLink to="/questions" className="navbar-brand">
-          Think And Ask
+          Think And Ask - فكر واسال
         </NavLink>
         <button
           class="navbar-toggler"
@@ -105,7 +105,7 @@ class Navbar extends Component {
                 to="/questions"
                 className="nav-link"
               >
-                <i className="fa fa-home"></i>All Questions
+                <i className="fa fa-home"></i>كل الاسئله
               </NavLink>
             </li>
             <li className="nav-item">
@@ -115,7 +115,7 @@ class Navbar extends Component {
                 to="/question/create"
                 className="nav-link"
               >
-                <i className="fa fa-plus-circle"></i>New Question
+                <i className="fa fa-plus-circle"></i>سؤال جديد
               </NavLink>
             </li>
           </ul>

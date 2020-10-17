@@ -28,10 +28,10 @@ class NewPost extends Component {
     if (this.props.auth.uid !== null) {
       this.props.createPost(post, () => {
         this.props.history.push("/");
-        showAlert("The post has been successfully created");
+        showAlert("تم وضع سؤالك بنجاح");
       });
     } else {
-      toast.error("Please go to register or sign in", {
+      toast.error("لا يمكن ترك سؤالك اذا لم يكن لديك اكونت لدينا", {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,

@@ -1,77 +1,97 @@
-import React from 'react';
-import {Field, Form} from 'redux-form';
+import React from "react";
+import { Field, Form } from "redux-form";
 
 export function renderInputField(field) {
-	const {meta: {touched, error}} = field;
-	return (
-		<div className="form-group">
-			<label>{field.label}</label>
-			<input 
-				className="form-control" 
-				type={field.type}
-				placeholder={field.placeholder}
-				{...field.input} />
-			{touched && error ? 
-				<div className="form-error"><i className="fa fa-warning"></i>{error}</div> : ''}
-		</div>
-	);
+  const {
+    meta: { touched, error },
+  } = field;
+  return (
+    <div className="form-group">
+      <label>{field.label}</label>
+      <input
+        className="form-control"
+        type={field.type}
+        placeholder={field.placeholder}
+        {...field.input}
+      />
+      {touched && error ? (
+        <div className="form-error">
+          <i className="fa fa-warning"></i>
+          {error}
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 }
 
 export function renderTextareaField(field) {
-	const {meta: {touched, error}} = field;
-	return (
-		<div className="form-group">
-			<label>{field.label}</label>
-			<textarea 
-				cols="30" rows={field.rows} 
-				className="form-control"
-				placeholder={field.placeholder}
-				{...field.input}
-			></textarea> 
-			{touched && error ? 
-				<div className="form-error"><i className="fa fa-warning"></i>{error}</div> : ''}
-		</div>
-	);
+  const {
+    meta: { touched, error },
+  } = field;
+  return (
+    <div className="form-group">
+      <label>{field.label}</label>
+      <textarea
+        cols="30"
+        rows={field.rows}
+        className="form-control"
+        placeholder={field.placeholder}
+        {...field.input}
+      ></textarea>
+      {touched && error ? (
+        <div className="form-error">
+          <i className="fa fa-warning"></i>
+          {error}
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 }
 
 export function renderUserForm(formType, that, onSubmit, btn) {
-	const {handleSubmit} = that.props;
+  const { handleSubmit } = that.props;
 
-	const username = (formType === 'register') ?
-					<Field 
-						label="Username"
-						name="username"
-						placeholder="Enter Your Username"
-						type="username"
-						component={renderInputField}
-					/>
-					: '';
-	
-	return (
-		<Form onSubmit={handleSubmit(onSubmit.bind(that))}>
+  const username =
+    formType === "register" ? (
+      <Field
+        label="اسم المستخدم"
+        name="username"
+        placeholder="يرجى ادخل اسم المستخدم"
+        type="username"
+        component={renderInputField}
+      />
+    ) : (
+      ""
+    );
 
-			{username}
+  return (
+    <Form onSubmit={handleSubmit(onSubmit.bind(that))}>
+      {username}
 
-			<Field 
-				label="Email"
-				name="email"
-				placeholder="Enter Your Email"
-				type="email"
-				component={renderInputField}
-			/>
+      <Field
+        label="البريد الالكترونى"
+        name="email"
+        placeholder="ادخل البريد الالكترونى "
+        type="email"
+        component={renderInputField}
+      />
 
-			<Field 
-				label="Password"
-				name="password"
-				placeholder="Enter Your Password"
-				type="password"
-				component={renderInputField}
-			/>
-			<div className="bottom-button">
-				<button className="btn btn-primary">{btn}</button>
-			</div>
-		</Form>
-	);
+      <Field
+        label="كلمه المرور"
+        name="password"
+        placeholder="ادخل كلمه المرور "
+        type="password"
+        component={renderInputField}
+      />
+      <div className="bottom-button">
+        <button className="btn btn-primary">{btn}</button>
+      </div>
+    </Form>
+  );
 }
 
 // export function renderPostForm(that, onSubmit, btn1, btn2, onClick) {
@@ -79,15 +99,15 @@ export function renderUserForm(formType, that, onSubmit, btn) {
 
 // 	return (
 // 		<Form onSubmit={handleSubmit(onSubmit.bind(that))}>
-// 			<Field 
+// 			<Field
 // 				label="Title"
 // 				name="title"
 // 				type="text"
 // 				placeholder="Enter Post Title"
 // 				component={renderInputField}
 // 			/>
-			
-// 			<Field 
+
+// 			<Field
 // 				label="Post Content"
 // 				name="content"
 // 				placeholder="Enter Post Content"
@@ -102,33 +122,29 @@ export function renderUserForm(formType, that, onSubmit, btn) {
 // }
 
 export function validatePostForm(values) {
-	const errors = {};
-	if (!values.title)
-		errors.title = 'Required';
-	
-	// if (!values.content)
-	// 	errors.content = 'Required';
+  const errors = {};
+  if (!values.title) errors.title = "يرجى ادخل هذا الحقل";
 
-	return errors;
+  // if (!values.content)
+  // 	errors.content = 'يرجى ادخل هذا الحقل';
+
+  return errors;
 }
 
 export function validateUserForm(values) {
-	const errors = {};
-	if (!values.username)
-		errors.username = "Required";
-	else if (values.username.length < 2)
-		errors.username = 'Must be at least 2 characters';
-	else if (values.username.length > 20)
-		errors.username = 'Must be less than 20 characters';
-	if (!values.email)
-		errors.email = "Required";
-	else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))
-		errors.email = "Invalid email address";
+  const errors = {};
+  if (!values.username) errors.username = "يرجى ادخل هذا الحقل";
+  else if (values.username.length < 2)
+    errors.username = "يجب اسم المستخدم لا يقل عن حرفين";
+  else if (values.username.length > 20)
+    errors.username = " يجب اسم المستخدم لايزيد عن 20 حرف ";
+  if (!values.email) errors.email = "يرجى ادخل هذا الحقل";
+  else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email))
+    errors.email = "بريد الكترونى غير صحيح";
 
-	if (!values.password)
-		errors.password = "Required";
-	else if (values.password.length < 6)
-		errors.password = "Must be at least 6 characters";
+  if (!values.password) errors.password = "يرجى ادخل هذا الحقل";
+  else if (values.password.length < 6)
+    errors.password = " يجب كمله المرور لا تقل عن 6 ارقام او احرف";
 
-	return errors;
+  return errors;
 }
