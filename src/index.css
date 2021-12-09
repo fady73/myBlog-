@@ -7,6 +7,8 @@ body {
   line-height: 1.5rem;
   letter-spacing: 0.2px;
   direction: rtl;
+	    overflow-x: hidden;
+
 }
 body h3,
 body h2 {
