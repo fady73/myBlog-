@@ -12,9 +12,14 @@ export class SearchBar extends React.Component {
   }
 
   onSearchSubmit() {
-    if (this.state.searchTerm) this.props.onSubmit(this.state.searchTerm);
+   this.props.onSubmit(this.state.searchTerm);
   }
-
+  
+handleKeyPress(e) {
+    if (e.key === 'Enter') {
+          this.props.onSubmit(this.state.searchTerm); 
+    }
+}
   render() {
     return (
       <div className="row justify-content-center">
@@ -25,6 +30,7 @@ export class SearchBar extends React.Component {
               type="text"
               className="form-control"
               placeholder="ابحث عن سؤال"
+              onKeyUp={this.handleKeyPress.bind(this)}
               onChange={this.onInputChange.bind(this)}
             />
             <span className="input-group-btn">
